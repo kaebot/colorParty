@@ -1,4 +1,6 @@
 $(document).ready(function(){
+		//the element with the gradient
+		var element= $('body');
 
 	    //the gradient's starting colors
 		var colorStartTop = [135, 215, 228];
@@ -14,20 +16,21 @@ $(document).ready(function(){
 		//the scroll position when the gradient change is complete
 		var scrollEnd = 500;
 
+		//set the initial style
+		element.css('background-image', 'linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
+		    			.css('background-image', '-o-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
+		    			.css('background-image', '-ms-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
+		    			.css('background-image', '-moz-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
+		    			.css('background-image', '-webkit-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)');        
 
-	$('body').css('background-image', 'linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
-        			.css('background-image', '-o-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
-        			.css('background-image', '-ms-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
-        			.css('background-image', '-moz-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)')
-        			.css('background-image', '-webkit-linear-gradient(top, rgb('+ colorStartTop[0] + ', ' + colorStartTop[1] + ', ' + colorStartTop[2] + ') 40%, rgb(' + colorStartBottom[0] + ',' + colorStartBottom[1] + ',' + colorStartBottom[2] + ') 80%)');        
-
+	//change on scroll
     $(document).scroll(function() {
 
         var percent = ($(this).scrollTop() - scrollStart) / (scrollEnd - scrollStart);
        
-       if (percent <= 1) {
-       
-       //TOP
+	    if (percent <= 1) {
+	       
+	    //TOP
 	        //red
 			if (colorStartTop[0] > colorEndTop[0]) {
 				var rT = Math.round(colorStartTop[0] - (percent*(colorStartTop[0]-colorEndTop[0])));
@@ -50,7 +53,7 @@ $(document).ready(function(){
 			};
 		   
 	   //BOTTOM	
-		//red
+		    //red
 			if (colorStartBottom[0] > colorEndBottom[0]) {
 				var rB = Math.round(colorStartBottom[0] - (percent*(colorStartBottom[0]-colorEndBottom[0])));
 			} else {
@@ -72,7 +75,7 @@ $(document).ready(function(){
 			};
 	    
 	       
-        $('body').css('background-image', 'linear-gradient(top, rgb(' + rT + ', ' + gT + ', ' + bT + ') 40%, rgb(' + rB + ',' + gB + ',' + bB + ') 80%)')
+        element.css('background-image', 'linear-gradient(top, rgb(' + rT + ', ' + gT + ', ' + bT + ') 40%, rgb(' + rB + ',' + gB + ',' + bB + ') 80%)')
         			.css('background-image', '-o-linear-gradient(top, rgb(' + rT + ', ' + gT + ', ' + bT + ') 40%, rgb(' + rB + ',' + gB + ',' + bB + ') 80%)')
         			.css('background-image', '-ms-linear-gradient(top, rgb(' + rT + ', ' + gT + ', ' + bT + ') 40%, rgb(' + rB + ',' + gB + ',' + bB + ') 80%)')
         			.css('background-image', '-moz-linear-gradient(top, rgb(' + rT + ', ' + gT + ', ' + bT + ') 40%, rgb(' + rB + ',' + gB + ',' + bB + ') 80%)')
